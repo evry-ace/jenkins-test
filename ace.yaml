@@ -1,9 +1,5 @@
 # App Configuration
 name: jenkins-test
-namespace: default
-
-# Disable environment specific namespace
-namespaceEnvify: false
 
 # Contact Information
 contact:
@@ -15,27 +11,40 @@ contact:
 
 # Helm Configuration
 helm:
+  # name: $name - $environment
   chart: ace/nodejs
-  version: ^1.0.0
+  # repo: https://evry-ace.github.io/helm-charts
+  # repoName: ace
+  version: ^2.0.0
 
-  default:
-    probe:
-      path: /health
+  cluster: kubernetes.ace.alpha
+  # namespace:
+  registry: acealpha.azurecr.io
 
-    ingress:
-      external: true
+  values:
+    foo: bar
+    bar: foo
 
-    secrets:
-    - name: DB_USER
-      valueFrom:
-        secretKeyRef:
-          name: jenkins-test-secret
-          key: dbUser
-          desc: Database username
-    - name: DB_PASS
-      valueFrom:
-        secretKeyRef:
-          name: jenkins-test-secret
-          key: dbPass
-          type: password
-          desc: Database password
+environments:
+  dev:
+    # cluster:
+    namespace: dev
+    # registry:
+    #
+    values:
+      bar: dev
+      dev: bar
+
+  test:
+    # cluster:
+    namespace: test
+    # registry:
+    #
+    # values: {}
+
+  prod:
+    # cluster:
+    namesapce: prod
+    # registry:
+    #
+    # values: {}

@@ -1,18 +1,17 @@
 #!groovy
 @Library("ace") _
-@Library("ace-example-config") import no.ace.AceGlobalConfig
 
-ace(AceGlobalConfig) {
+ace {
   stage('Build') {
-    image = docker.build ace.dockerImage, '--pull .'
+    dockerBuild()
   }
 
   stage('Push') {
-    // image.push()
+    dockerPush()
   }
 
   stage('Deploy') {
-    deploy('test', [dryrun: true])
+    deploy('test')
 
     slack.notifyDeploy('test')
   }

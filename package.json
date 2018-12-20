@@ -1,0 +1,13 @@
+{
+  "name": "jenkins-test",
+  "version": "1.0.0",
+  "description": "Jenkins Test App",
+  "main": "index.js",
+  "repository": "git@github.com:evry-ace/jenkins-test.git",
+  "author": "Hans Kristian Flaatten",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
