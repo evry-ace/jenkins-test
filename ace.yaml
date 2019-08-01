@@ -6,8 +6,10 @@ contact:
   wiki_url: https://edbergobergen.jira.com/wiki/spaces/DEV
   jira_url: https://edbergobergen.jira.com/browse/DEV
   responsible: DevOps
-  slack_notifications: "#devops-notifications"
-  slack_alerts: "#devops-alerts"
+
+  slack:
+    notifications: "#devops-notifications"
+    alerts: "#devops-alerts"
 
 # Helm Configuration
 helm:
@@ -15,11 +17,11 @@ helm:
   chart: ace/nodejs
   # repo: https://evry-ace.github.io/helm-charts
   # repoName: ace
-  version: ^2.0.0
+  version: ^4.0.0
 
-  cluster: kubernetes.ace.alpha
+  cluster: kind
   # namespace:
-  registry: acealpha.azurecr.io
+  registry: registry.test.local
 
   values:
     foo: bar
